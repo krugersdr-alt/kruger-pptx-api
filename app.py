@@ -10,7 +10,14 @@ import requests
 from PIL import Image
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='*')
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    return response
 
 # ── COLORES ───────────────────────────────────────────────────
 OR  = RGBColor(0xFF, 0x5B, 0x00)
