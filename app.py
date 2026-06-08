@@ -245,8 +245,7 @@ def slide_dolores(prs, sl, vertical_nm, pain):
         y = 1.3 + row * 2.0
         shape = sl.shapes.add_shape(5, in_(x), in_(y), in_(4.3), in_(1.85))  # roundRect
         shape.fill.solid()
-        shape.fill.fore_color.rgb = hex_color('FFFFFF')
-        shape.fill.fore_color.theme_color = None
+        shape.fill.fore_color.rgb = hex_color('2E2E2E')
         from pptx.util import Pt as PtU
         shape.fill.fore_color.rgb = hex_color('2E2E2E')
         shape.line.color.rgb = OR
