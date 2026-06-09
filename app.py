@@ -130,11 +130,14 @@ def slide_portada(prs, sl, cfg, lang):
     add_logo(sl, LOGO_W, 0.4, 0.25, 2.5, 0.62)
     add_text(sl, 8.5, 0.22, 4.6, 0.4, cfg.get('name',''), 13, bold=True, color=WH, align=PP_ALIGN.RIGHT)
     add_text(sl, 8.5, 0.6, 4.6, 0.35, cfg.get('title',''), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
-    add_text(sl, 0.4, 2.8, 5.4, 2.8,
-             T(lang,
-               'DESARROLLO DE APLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
-               'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES'),
-             53, bold=True, color=WH)
+    if lang == 'en':
+        add_text(sl, 0.4, 2.2, 5.4, 3.2,
+                 'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
+                 42, bold=True, color=WH)
+    else:
+        add_text(sl, 0.4, 2.2, 5.4, 3.2,
+                 'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
+                 38, bold=True, color=WH)
     if lang == 'en':
         add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
             ('Designing scalable digital experiences for ', 17, False, WH),
@@ -205,8 +208,8 @@ def slide_quienes(prs, sl, lang):
 def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
     add_text(sl, 7.2, -0.3, 5.5, 4.5, '01', 227, bold=True, color=WH)
-    add_text(sl, 6.9, 4.3, 6.0, 1.3, T(lang,'WHY','WHY'), 67, color=WH)
-    add_text(sl, 6.9, 5.3, 6.3, 1.6, 'KRUGER', 85, bold=True, color=WH)
+    add_text(sl, 6.9, 5.2, 6.0, 1.1, T(lang,'WHY','WHY'), 60, color=WH)
+    add_text(sl, 6.9, 6.1, 6.3, 1.3, 'KRUGER', 75, bold=True, color=WH)
     puntos_es = [
         'Transformamos negocios con tecnología centrada en personas',
         '14 países · 30 años · 1500+ proyectos entregados',
@@ -219,7 +222,7 @@ def slide_porque(prs, sl, lang):
     ]
     puntos = puntos_en if lang == 'en' else puntos_es
     for idx, pt in enumerate(puntos):
-        add_runs(sl, 7.2, 3.1 + idx * 0.72, 5.9, 0.65, [
+        add_runs(sl, 7.2, 2.6 + idx * 0.78, 5.9, 0.72, [
             (f'{idx+1}.  ', 13, True, hc('FFE0CC')),
             (pt, 13, False, hc('FFE0CC')),
         ], wrap=True)
@@ -271,9 +274,9 @@ def slide_como(prs, sl, lang):
             (f'• {t}', 14, True, DK),
             (f'  —  {d}', 14, False, LGY),
         ], wrap=True)
-    add_runs(sl, 0.6, 7.1, 6.5, 0.3, [
-        (footer[0], 14, True, OR),
-        (footer[1], 14, False, DK),
+    add_runs(sl, 0.6, 6.8, 6.5, 0.5, [
+        (footer[0], 13, True, OR),
+        (footer[1], 13, False, DK),
     ])
     add_ph(sl, 7.1, 0.3, 5.9, 6.9, T(lang,'Mockups multi-dispositivo','Multi-device mockups'))
 
