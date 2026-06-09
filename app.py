@@ -132,17 +132,19 @@ def slide_portada(prs, sl, cfg, lang):
     add_text(sl, 8.5, 0.6, 4.6, 0.35, cfg.get('title',''), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     add_text(sl, 0.4, 2.8, 5.4, 2.8,
              T(lang,
-               'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
+               'DESARROLLO DE APLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
                'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES'),
              53, bold=True, color=WH)
-    add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
-        (T(lang,
-           'Diseñando experiencias digitales escalables para ',
-           'Designing scalable digital experiences for '), 17, False, WH),
-        (T(lang,
-           'enterprise, telecom, fintech y ecosistemas de cliente.',
-           'enterprise, telecom, fintech and customer ecosystems.'), 17, True, WH),
-    ], wrap=True)
+    if lang == 'en':
+        add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
+            ('Designing scalable digital experiences for ', 17, False, WH),
+            ('enterprise, telecom, fintech and customer ecosystems.', 17, True, WH),
+        ], wrap=True)
+    else:
+        add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
+            ('Diseñando experiencias digitales escalables para ', 17, False, WH),
+            ('enterprise, telecom, fintech y ecosistemas de cliente.', 17, True, WH),
+        ], wrap=True)
 
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
@@ -322,13 +324,15 @@ def slide_case_detail(prs, sl, case, lang):
     add_rect(sl, 0, 1.25, 13.33, 0.6, hc('111111'))
     add_text(sl, 0.4, 1.32, 12.0, 0.45, case['sub'].upper(), 16, bold=True, color=WH)
     add_ph(sl, 0.3, 1.95, 4.8, 5.3, T(lang,'Screenshots · Persona','Screenshots · Person'))
-    labels = [('CHALLENGE','CHALLENGE'),('APPROACH','APPROACH'),('OUTCOME','OUTCOME')]
-    keys = ['ch','ap','out']
-    for idx,(lbl_es,lbl_en) in enumerate(labels):
+    if lang == 'en':
+        labels = ['CHALLENGE', 'APPROACH', 'OUTCOME']
+    else:
+        labels = ['RETO', 'ENFOQUE', 'RESULTADO']
+    keys = ['ch', 'ap', 'out']
+    for idx in range(3):
         y = 2.0 + idx * 1.82
         add_rect(sl, 5.4, y, 7.6, 1.65, hc('1A1A1A'), hc('333333'))
-        add_text(sl, 5.65, y+0.15, 4.0, 0.45,
-                 lbl_en if lang=='en' else lbl_es, 21, bold=True, color=OR2)
+        add_text(sl, 5.65, y+0.15, 4.0, 0.45, labels[idx], 21, bold=True, color=OR2)
         add_text(sl, 5.65, y+0.65, 7.0, 0.9, case[keys[idx]], 13, color=MGY, wrap=True)
 
 def slide_productos(prs, sl, vertical_nm, prods, lang):
@@ -374,28 +378,24 @@ def slide_servicios(prs, sl, vertical_nm, servs, lang):
 
 def slide_partners(prs, sl, lang):
     set_bg(sl, WH)
-    add_logo(sl, LOGO_B, 5.4, 0.2, 2.5, 0.65)
-    add_text(sl, 0, 0.9, 13.33, 0.9, 'PARTNERS', 42,
-             bold=True, color=OR, align=PP_ALIGN.CENTER)
-    # 8 imágenes en 2 filas de 4
-    img_w = 2.8
-    img_h = 1.1
-    gap_x = 0.25
-    start_x = (13.33 - (4 * img_w + 3 * gap_x)) / 2
+    add_logo(sl, LOGO_B, 0.4, 0.2, 2.2, 0.55)
+    add_text(sl, 9.0, 0.1, 4.0, 0.85, 'PARTNERS', 42,
+             bold=True, color=OR, align=PP_ALIGN.RIGHT)
+    # 8 imágenes, una por fila, ancho completo
+    img_h = 0.72
+    gap = 0.06
+    start_y = 1.1
     for idx, url in enumerate(PARTNER_IMGS):
-        col = idx % 4
-        row = idx // 4
-        x = start_x + col * (img_w + gap_x)
-        y = 2.1 + row * (img_h + 0.35)
+        y = start_y + idx * (img_h + gap)
         try:
-            sl.shapes.add_picture(fetch_image(url), i(x), i(y), i(img_w), i(img_h))
+            sl.shapes.add_picture(fetch_image(url), i(0.3), i(y), i(12.73), i(img_h))
         except Exception as e:
             print(f"Partner img error {idx}: {e}")
-            add_rect(sl, x, y, img_w, img_h, GR, hc('DDDDDD'))
-    add_text(sl, 0, 7.1, 13.33, 0.3,
+            add_rect(sl, 0.3, y, 12.73, img_h, GR, hc('DDDDDD'))
+    add_text(sl, 0, 7.2, 13.33, 0.25,
              T(lang,'14 países · 1500+ proyectos entregados',
                     '14 countries · 1500+ projects delivered'),
-             11, color=hc('AAAAAA'), align=PP_ALIGN.CENTER)
+             10, color=hc('AAAAAA'), align=PP_ALIGN.CENTER)
 
 def slide_gancho(prs, sl, lang):
     set_bg(sl, WH)
@@ -435,9 +435,7 @@ def slide_cierre(prs, sl, cfg, lang):
     add_text(sl, 0, 5.1, 13.33, 0.45, contact, 15, bold=True, color=WH, align=PP_ALIGN.CENTER)
     if cfg.get('client'):
         add_text(sl, 0, 5.65, 13.33, 0.38,
-                 T(lang,
-                   f"Preparado especialmente para {cfg['client']}",
-                   f"Specially prepared for {cfg['client']}"),
+                 f"Preparado especialmente para {cfg['client']}" if lang=='es' else f"Specially prepared for {cfg['client']}",
                  12, color=hc('FFE8D6'), align=PP_ALIGN.CENTER, italic=True)
     add_text(sl, 0.4, 7.2, 5.0, 0.22, '© 2026 KRUGER CORP.', 8, color=WH)
     add_text(sl, 8.0, 7.2, 5.0, 0.22,
