@@ -441,7 +441,6 @@ def slide_gancho(prs, sl, lang):
                  13, color=LGY, wrap=True)
     add_rect(sl, 1.2, 4.65, 1.5, 0.08, OR)
     add_logo(sl, SLIDE_IMGS['gancho_main'], 9.1, 0.3, 3.9, 6.9)
-    add_logo(sl, SLIDE_IMGS['gancho_side'], 9.1, 0.3, 1.9, 6.9)
 
 def slide_cierre(prs, sl, cfg, lang):
     set_bg(sl, OR)
