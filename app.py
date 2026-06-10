@@ -215,8 +215,8 @@ def slide_portada(prs, sl, cfg, lang):
 # SLIDE 2 — DISCLAIMER
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
-    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 6.8, 0.0, 6.53, 7.5)
-    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 5.8, 1.8, 4.5, 5.5)
+    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 6.5, 0.0, 6.83, 7.5)
+    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 0.0, 4.5, 5.5, 3.0)
     add_logo(sl, LOGO_B, 0.75, 0.5, 1.764, 0.55)
     add_text(sl, 0.687, 2.144, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
     add_rect(sl, 0.782, 3.199, 0.85, 0.05, DK)
@@ -314,13 +314,13 @@ def slide_como(prs, sl, lang):
     add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
     if lang == 'en':
         add_runs(sl, 0.6, 0.2, 7.5, 0.8, [
-            ('What ', 63, True, DK),
-            ('We Build', 63, True, OR),
+            ('What ', 48, True, DK),
+            ('We Build', 48, True, OR),
         ])
     else:
         add_runs(sl, 0.6, 0.2, 7.5, 0.8, [
-            ('Qué ', 63, True, DK),
-            ('Construimos', 63, True, OR),
+            ('Qué ', 48, True, DK),
+            ('Construimos', 48, True, OR),
         ])
     if lang == 'en':
         add_runs(sl, 0.6, 1.6, 7.0, 0.55, [
@@ -487,11 +487,17 @@ def slide_servicios(prs, sl, vertical_nm, servs, lang):
 # SLIDE 13 — PARTNERS
 def slide_partners(prs, sl, lang):
     set_bg(sl, WH)
+    add_logo(sl, LOGO_B, 0.4, 0.2, 1.764, 0.55)
+    add_text(sl, 4.212, 0.119, 4.0, 0.85, 'PARTNERS', 42,
+             bold=True, color=OR, align=PP_ALIGN.CENTER)
     try:
-        sl.shapes.add_picture(fetch_image('https://res.cloudinary.com/dpcojkrta/image/upload/v1781112250/Imagen23_rx91eh.png'), i(0), i(0), i(13.33), i(7.5))
+        sl.shapes.add_picture(fetch_image('https://res.cloudinary.com/dpcojkrta/image/upload/v1781112250/Imagen23_rx91eh.png'), i(0.106), i(1.1), i(13.106), i(6.15))
     except Exception as e:
         print(f"Partners img error: {e}")
-    add_logo(sl, LOGO_B, 0.4, 0.2, 1.764, 0.55)
+    add_text(sl, 0, 7.2, 13.33, 0.25,
+             T(lang,'14 países · 1500+ proyectos entregados',
+                    '14 countries · 1500+ projects delivered'),
+             10, color=hc('AAAAAA'), align=PP_ALIGN.CENTER)
 
 # SLIDE 14 — GANCHO
 def slide_gancho(prs, sl, lang):
