@@ -216,10 +216,10 @@ def slide_portada(prs, sl, cfg, lang):
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
     add_logo(sl, SLIDE_IMGS['disclaimer_b'], 6.5, 0.0, 6.83, 7.5)
-    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 0.0, 4.5, 5.5, 3.0)
+    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 0.0, 5.2, 5.5, 2.3)
     add_logo(sl, LOGO_B, 0.75, 0.5, 1.764, 0.55)
-    add_text(sl, 0.687, 2.144, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
-    add_rect(sl, 0.782, 3.199, 0.85, 0.05, DK)
+    add_text(sl, 0.687, 1.6, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
+    add_rect(sl, 0.782, 2.65, 0.85, 0.05, DK)
     if lang == 'en':
         add_runs(sl, 0.75, 3.606, 5.508, 1.818, [
             ('The information contained in this document is ', 17, False, DK),
@@ -277,9 +277,8 @@ def slide_quienes(prs, sl, lang):
 # SLIDE 4 — WHY KRUGER
 def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
-    # Imagen de fondo completo
     try:
-        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(0), i(0), i(13.33), i(7.5))
+        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(1.93), i(0.0), i(4.94), i(7.5))
     except Exception as e:
         print(f'porque img error: {e}')
     add_logo(sl, LOGO_W, 0.212, 0.078, 1.443, 0.45)
