@@ -302,7 +302,11 @@ def slide_porque(prs, sl, lang):
             (f'{idx+1}.', 13, True, hc('FFE0CC')),
             (f' {pt}', 13, False, hc('FFE0CC')),
         ], wrap=True)
-    add_logo(sl, SLIDE_IMGS['porque'], 2.364, 0.29, 3.19, 6.9)
+    # Insertar con dimensiones fijas para mantener el layout
+    try:
+        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(2.364), i(0.29), i(3.19), i(6.9))
+    except Exception as e:
+        print(f'porque img error: {e}')
 
 # SLIDE 5 — WHAT WE BUILD
 def slide_como(prs, sl, lang):
@@ -335,7 +339,7 @@ def slide_como(prs, sl, lang):
         ]
     else:
         add_runs(sl, 0.6, 1.6, 7.0, 0.55, [
-            ('Construimos ', 17, False, LGY),
+            ('Creamos ', 17, False, LGY),
             ('experiencias digitales escalables', 17, True, DK),
             (' que conectan tecnología, operaciones y engagement del cliente.', 17, False, LGY),
         ], wrap=True)
@@ -483,22 +487,10 @@ def slide_servicios(prs, sl, vertical_nm, servs, lang):
 # SLIDE 13 — PARTNERS
 def slide_partners(prs, sl, lang):
     set_bg(sl, WH)
-    add_logo(sl, LOGO_B, 0.4, 0.2, 1.764, 0.55)
-    add_text(sl, 4.212, 0.119, 4.0, 0.85, 'PARTNERS', 42,
-             bold=True, color=OR, align=PP_ALIGN.CENTER)
-    start_y = 1.1
-    img_h = 0.72
-    gap = 0.08
-    for idx, url in enumerate(PARTNER_IMGS):
-        y = start_y + idx * (img_h + gap)
-        try:
-            sl.shapes.add_picture(fetch_image(url), i(0.106), i(y), i(13.106), i(img_h))
-        except Exception as e:
-            print(f"Partner img error {idx}: {e}")
-    add_text(sl, 0, 7.2, 13.33, 0.25,
-             T(lang,'14 países · 1500+ proyectos entregados',
-                    '14 countries · 1500+ projects delivered'),
-             10, color=hc('AAAAAA'), align=PP_ALIGN.CENTER)
+    try:
+        sl.shapes.add_picture(fetch_image('https://res.cloudinary.com/dpcojkrta/image/upload/v1781112250/Imagen23_rx91eh.png'), i(0), i(0), i(13.33), i(7.5))
+    except Exception as e:
+        print(f"Partners img error: {e}")
 
 # SLIDE 14 — GANCHO
 def slide_gancho(prs, sl, lang):
