@@ -277,6 +277,11 @@ def slide_quienes(prs, sl, lang):
 # SLIDE 4 — WHY KRUGER
 def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
+    # Imagen de fondo completo
+    try:
+        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(0), i(0), i(13.33), i(7.5))
+    except Exception as e:
+        print(f'porque img error: {e}')
     add_logo(sl, LOGO_W, 0.212, 0.078, 1.443, 0.45)
     add_text(sl, 7.4, 0.033, 5.5, 3.635, '01', 210, bold=True, color=WH)
     if lang == 'en':
@@ -302,23 +307,18 @@ def slide_porque(prs, sl, lang):
             (f'{idx+1}.', 13, True, hc('FFE0CC')),
             (f' {pt}', 13, False, hc('FFE0CC')),
         ], wrap=True)
-    # Insertar con dimensiones fijas para mantener el layout
-    try:
-        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(2.364), i(0.29), i(3.19), i(6.9))
-    except Exception as e:
-        print(f'porque img error: {e}')
 
 # SLIDE 5 — WHAT WE BUILD
 def slide_como(prs, sl, lang):
     set_bg(sl, GR)
     add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
     if lang == 'en':
-        add_runs(sl, 0.6, 0.2, 7.5, 1.3, [
+        add_runs(sl, 0.6, 0.2, 7.5, 0.8, [
             ('What ', 63, True, DK),
             ('We Build', 63, True, OR),
         ])
     else:
-        add_runs(sl, 0.6, 0.2, 7.5, 1.3, [
+        add_runs(sl, 0.6, 0.2, 7.5, 0.8, [
             ('Qué ', 63, True, DK),
             ('Construimos', 63, True, OR),
         ])
@@ -491,12 +491,13 @@ def slide_partners(prs, sl, lang):
         sl.shapes.add_picture(fetch_image('https://res.cloudinary.com/dpcojkrta/image/upload/v1781112250/Imagen23_rx91eh.png'), i(0), i(0), i(13.33), i(7.5))
     except Exception as e:
         print(f"Partners img error: {e}")
+    add_logo(sl, LOGO_B, 0.4, 0.2, 1.764, 0.55)
 
 # SLIDE 14 — GANCHO
 def slide_gancho(prs, sl, lang):
     set_bg(sl, WH)
     add_rect(sl, 0, 0, 0.9, 7.5, OR)
-    add_logo(sl, LOGO_W, 1.2, 0.205, 1.6, 0.499)
+    add_logo(sl, LOGO_B, 1.2, 0.205, 1.6, 0.499)
     add_text(sl, 1.1, 1.218, 1.0, 1.5, '"', 80, color=OR, italic=False)
     if lang == 'en':
         add_text(sl, 1.1, 2.078, 7.2, 2.794,
