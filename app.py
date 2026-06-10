@@ -123,7 +123,25 @@ def add_runs(sl, x, y, w, h, runs, align=PP_ALIGN.LEFT, wrap=True):
 
 def add_logo(sl, url, x, y, w, h):
     try:
-        sl.shapes.add_picture(fetch_image(url), i(x), i(y), i(w), i(h))
+        img_bytes = fetch_image(url)
+        from PIL import Image as PILImage
+        img_bytes.seek(0)
+        pil = PILImage.open(img_bytes)
+        img_w_px, img_h_px = pil.size
+        max_w = i(w)
+        max_h = i(h)
+        emu_per_px = 914400 / 96
+        native_w = int(img_w_px * emu_per_px)
+        native_h = int(img_h_px * emu_per_px)
+        if native_w > max_w or native_h > max_h:
+            scale = min(max_w / native_w, max_h / native_h)
+            final_w = int(native_w * scale)
+            final_h = int(native_h * scale)
+        else:
+            final_w = native_w
+            final_h = native_h
+        img_bytes.seek(0)
+        sl.shapes.add_picture(img_bytes, i(x), i(y), final_w, final_h)
     except Exception as e:
         print(f"Logo error: {e}")
 
