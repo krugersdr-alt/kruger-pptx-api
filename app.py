@@ -31,25 +31,21 @@ OR2 = RGBColor(0xFB, 0x79, 0x01)
 LOGO_W = 'https://res.cloudinary.com/dpcojkrta/image/upload/v1780945082/Logo_Kruger_naranja_blanco_negro_y_plomo-01_mmdzkk.png'
 LOGO_B = 'https://res.cloudinary.com/dpcojkrta/image/upload/v1780944928/Logo_Kruger_naranja_blanco_negro_y_plomo-02_ynrqui.png'
 
-# Imágenes fijas por slide (orden definido)
 SLIDE_IMGS = {
     'portada':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100423/Imagen1_hsptrs.png',
     'disclaimer':   'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100456/Imagen2_a51brf.png',
     'quienes':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100548/Imagen4_phr6cl.png',
     'porque':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100592/Imagen5_nxwp0o.png',
     'como':         'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100646/Imagen8_cdxxs3.png',
-    'dolores':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100690/Imagen14_uzhsye.png',
+    'dolores':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781109915/Imagen17_xlujoc.png',
     'case_intro_a': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100753/Imagen9_kechhv.png',
     'case_detail_a':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100802/Imagen10_lhl5is.png',
     'case_intro_b': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100834/Imagen11_qjevxo.png',
-    'case_intro_b2':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100881/Imagen12_jj8nsf.png',
     'case_detail_b':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100894/Imagen13_bddubq.png',
     'gancho_main':  'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100894/Imagen13_bddubq.png',
-    'gancho_side':  'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100952/Imagen16_xl4ujj.png',
     'cierre':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100952/Imagen16_xl4ujj.png',
 }
 
-# Partner images en orden
 PARTNER_IMGS = [
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019937/Imagen8_ljshve.png',
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019958/Imagen7_vlvu1d.png',
@@ -60,6 +56,50 @@ PARTNER_IMGS = [
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781020053/Imagen2_l0jovf.png',
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781020068/Imagen1_fdslxh.png',
 ]
+
+# Traducción automática de cargos comunes
+TITLE_TRANSLATIONS = {
+    'gerente': 'Manager',
+    'gerente general': 'General Manager',
+    'gerente comercial': 'Commercial Manager',
+    'gerente de ventas': 'Sales Manager',
+    'gerente de marketing': 'Marketing Manager',
+    'gerente de tecnología': 'Technology Manager',
+    'gerente de ti': 'IT Manager',
+    'gerente de sistemas': 'Systems Manager',
+    'director': 'Director',
+    'director comercial': 'Commercial Director',
+    'director de ventas': 'Sales Director',
+    'director de tecnología': 'Technology Director',
+    'director de marketing': 'Marketing Director',
+    'director de ti': 'IT Director',
+    'ejecutivo de ventas': 'Sales Executive',
+    'ejecutivo comercial': 'Commercial Executive',
+    'ejecutivo de cuentas': 'Account Executive',
+    'consultor': 'Consultant',
+    'consultor comercial': 'Commercial Consultant',
+    'analista': 'Analyst',
+    'analista de ventas': 'Sales Analyst',
+    'coordinador': 'Coordinator',
+    'coordinador comercial': 'Commercial Coordinator',
+    'jefe comercial': 'Commercial Lead',
+    'jefe de ventas': 'Sales Lead',
+    'vicepresidente': 'Vice President',
+    'presidente': 'President',
+    'ceo': 'CEO',
+    'cto': 'CTO',
+    'cfo': 'CFO',
+    'coo': 'COO',
+    'socio': 'Partner',
+    'representante': 'Representative',
+    'representante comercial': 'Commercial Representative',
+}
+
+def translate_title(title, lang):
+    if lang != 'en':
+        return title
+    key = title.strip().lower()
+    return TITLE_TRANSLATIONS.get(key, title)
 
 W = Inches(13.33)
 H = Inches(7.5)
@@ -145,16 +185,6 @@ def add_logo(sl, url, x, y, w, h):
     except Exception as e:
         print(f"Logo error: {e}")
 
-def add_ph(sl, x, y, w, h, label):
-    shape = sl.shapes.add_shape(1, i(x), i(y), i(w), i(h))
-    shape.fill.solid()
-    shape.fill.fore_color.rgb = hc('F5F5F5')
-    shape.line.color.rgb = OR
-    shape.line.width = Pt(1)
-    add_text(sl, x, y, w, h, label, 9, bold=True,
-             color=hc('888888'), align=PP_ALIGN.CENTER)
-
-# ── TEXTOS BILINGÜE ───────────────────────────────────────────
 def T(lang, es, en):
     return en if lang == 'en' else es
 
@@ -165,21 +195,19 @@ def slide_portada(prs, sl, cfg, lang):
     add_logo(sl, SLIDE_IMGS['portada'], 5.98, 0, 7.35, 7.5)
     add_logo(sl, LOGO_W, 0.4, 0.25, 2.5, 0.62)
     add_text(sl, 8.5, 0.22, 4.6, 0.4, cfg.get('name',''), 13, bold=True, color=WH, align=PP_ALIGN.RIGHT)
-    add_text(sl, 8.5, 0.6, 4.6, 0.35, cfg.get('title',''), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
+    add_text(sl, 8.5, 0.6, 4.6, 0.35, translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     if lang == 'en':
         add_text(sl, 0.4, 2.2, 5.4, 3.2,
                  'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
                  42, bold=True, color=WH)
-    else:
-        add_text(sl, 0.4, 2.2, 5.4, 3.2,
-                 'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
-                 38, bold=True, color=WH)
-    if lang == 'en':
         add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
             ('Designing scalable digital experiences for ', 17, False, WH),
             ('enterprise, telecom, fintech and customer ecosystems.', 17, True, WH),
         ], wrap=True)
     else:
+        add_text(sl, 0.4, 2.2, 5.4, 3.2,
+                 'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
+                 38, bold=True, color=WH)
         add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
             ('Diseñando experiencias digitales escalables para ', 17, False, WH),
             ('enterprise, telecom, fintech y ecosistemas de cliente.', 17, True, WH),
@@ -214,8 +242,8 @@ def slide_quienes(prs, sl, lang):
     add_logo(sl, LOGO_B, 0.6, 0.3, 2.2, 0.55)
     add_rect(sl, 0.6, 1.0, 1.5, 0.05, OR)
     add_runs(sl, 0.6, 1.15, 6.5, 0.4, [
-        (T(lang,'BUILDING SOLUTIONS. ','BUILDING SOLUTIONS. '), 14, True, DK),
-        (T(lang,'DELIVERING SUCCESS.','DELIVERING SUCCESS.'), 14, True, OR),
+        ('BUILDING SOLUTIONS. ', 14, True, DK),
+        ('DELIVERING SUCCESS.', 14, True, OR),
     ])
     if lang == 'en':
         add_runs(sl, 0.6, 1.65, 5.8, 1.4, [
@@ -223,17 +251,16 @@ def slide_quienes(prs, sl, lang):
             ('complex digital products', 19, True, DK),
             (' into simple, user-centered experiences.', 19, False, DK),
         ], wrap=True)
+        stats = [('30+','YEARS OF INNOVATION'),('1500+','PROJECTS DELIVERED'),
+                 ('450+','CERTIFIED EXPERTS'),('14','COUNTRIES WORLDWIDE')]
     else:
         add_runs(sl, 0.6, 1.65, 5.8, 1.4, [
             ('Kruger crea aplicaciones web y móviles que ayudan a las empresas a convertir ', 19, False, DK),
             ('productos digitales complejos', 19, True, DK),
             (' en experiencias simples y centradas en el usuario.', 19, False, DK),
         ], wrap=True)
-    stats_es = [('30+','AÑOS DE INNOVACIÓN'),('1500+','PROYECTOS ENTREGADOS'),
-                ('450+','EXPERTOS CERTIFICADOS'),('14','PAÍSES DE PRESENCIA GLOBAL')]
-    stats_en = [('30+','YEARS OF INNOVATION'),('1500+','PROJECTS DELIVERED'),
-                ('450+','CERTIFIED EXPERTS'),('14','COUNTRIES WORLDWIDE')]
-    stats = stats_en if lang == 'en' else stats_es
+        stats = [('30+','AÑOS DE INNOVACIÓN'),('1500+','PROYECTOS ENTREGADOS'),
+                 ('450+','EXPERTOS CERTIFICADOS'),('14','PAÍSES DE PRESENCIA GLOBAL')]
     for idx,(v,l) in enumerate(stats):
         y = 3.2 + idx * 0.95
         add_rect(sl, 0.6, y, 0.38, 0.38, WH, OR)
@@ -243,19 +270,20 @@ def slide_quienes(prs, sl, lang):
 def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
     add_text(sl, 7.2, -0.3, 5.5, 4.5, '01', 227, bold=True, color=WH)
-    add_text(sl, 6.9, 5.2, 6.0, 1.1, T(lang,'WHY','WHY'), 60, color=WH)
+    add_text(sl, 6.9, 5.2, 6.0, 1.1, 'WHY', 60, color=WH)
     add_text(sl, 6.9, 6.1, 6.3, 1.3, 'KRUGER', 75, bold=True, color=WH)
-    puntos_es = [
-        'Transformamos negocios con tecnología centrada en personas',
-        '14 países · 30 años · 1500+ proyectos entregados',
-        'Expertos en sectores regulados y ecosistemas enterprise'
-    ]
-    puntos_en = [
-        'We transform businesses with human-centered technology',
-        '14 countries · 30 years · 1500+ projects delivered',
-        'Experts in regulated sectors and enterprise ecosystems'
-    ]
-    puntos = puntos_en if lang == 'en' else puntos_es
+    if lang == 'en':
+        puntos = [
+            'We transform businesses with human-centered technology',
+            '14 countries · 30 years · 1500+ projects delivered',
+            'Experts in regulated sectors and enterprise ecosystems',
+        ]
+    else:
+        puntos = [
+            'Transformamos negocios con tecnología centrada en personas',
+            '14 países · 30 años · 1500+ proyectos entregados',
+            'Expertos en sectores regulados y ecosistemas enterprise',
+        ]
     for idx, pt in enumerate(puntos):
         add_runs(sl, 7.2, 2.6 + idx * 0.78, 5.9, 0.72, [
             (f'{idx+1}.  ', 13, True, hc('FFE0CC')),
@@ -268,15 +296,14 @@ def slide_como(prs, sl, lang):
     set_bg(sl, GR)
     add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
     add_runs(sl, 0.6, 0.2, 7.5, 1.3, [
-        (T(lang,'What ','What '), 63, True, DK),
-        (T(lang,'We Build','We Build'), 63, True, OR),
+        ('What ', 63, True, DK),
+        ('We Build', 63, True, OR),
     ])
     if lang == 'en':
         add_runs(sl, 0.6, 1.6, 7.0, 0.55, [
             ('We build ', 17, False, LGY),
             ('scalable digital experiences', 17, True, DK),
-            (' that connect ', 17, False, LGY),
-            ('technology, operations and customer engagement.', 17, True, DK),
+            (' that connect technology, operations and customer engagement.', 17, False, LGY),
         ], wrap=True)
         items = [
             ('Mobile & Self-Service Apps', 'Digital journeys for customers.'),
@@ -286,7 +313,6 @@ def slide_como(prs, sl, lang):
             ('B2B Platforms', 'Operational tools for clarity.'),
             ('UX/UI Systems', 'Multi-screen interfaces.'),
         ]
-        footer = ('HUMAN-CENTERED ', 'digital products powered by INFINITE DIGITAL TECHNOLOGY.')
     else:
         add_runs(sl, 0.6, 1.6, 7.0, 0.55, [
             ('Construimos ', 17, False, LGY),
@@ -301,7 +327,6 @@ def slide_como(prs, sl, lang):
             ('B2B Platforms', 'Herramientas operativas.'),
             ('UX/UI Systems', 'Interfaces multi-pantalla.'),
         ]
-        footer = ('HUMAN-CENTERED ', 'digital products powered by INFINITE DIGITAL TECHNOLOGY.')
     add_rect(sl, 0.6, 2.3, 0.08, 4.8, OR)
     for idx,(t,d) in enumerate(items):
         y = 2.35 + idx * 0.75
@@ -310,8 +335,8 @@ def slide_como(prs, sl, lang):
             (f'  —  {d}', 14, False, LGY),
         ], wrap=True)
     add_runs(sl, 0.6, 6.8, 6.5, 0.5, [
-        (footer[0], 13, True, OR),
-        (footer[1], 13, False, DK),
+        ('HUMAN-CENTERED ', 13, True, OR),
+        ('digital products powered by INFINITE DIGITAL TECHNOLOGY.', 13, False, DK),
     ])
     add_logo(sl, SLIDE_IMGS['como'], 7.1, 0.3, 5.9, 6.9)
 
@@ -322,7 +347,7 @@ def slide_dolores(prs, sl, vertical_nm, pain, lang):
         (vertical_nm, 32, True, WH),
     ])
     add_rect(sl, 0.4, 1.15, 12.5, 0.05, hc('FF5B0066'))
-    add_logo(sl, SLIDE_IMGS['dolores'], 0.4, 1.3, 2.6, 5.9)
+    add_logo(sl, SLIDE_IMGS['dolores'], 0.4, 1.3, 2.6, 5.5)
     for idx, pt in enumerate(pain):
         col = 0 if idx < 3 else 1
         row = idx % 3
@@ -422,7 +447,6 @@ def slide_partners(prs, sl, lang):
     add_logo(sl, LOGO_B, 0.4, 0.2, 2.2, 0.55)
     add_text(sl, 9.0, 0.1, 4.0, 0.85, 'PARTNERS', 42,
              bold=True, color=OR, align=PP_ALIGN.RIGHT)
-    # 8 imágenes, una por fila, ancho completo
     img_h = 0.72
     gap = 0.06
     start_y = 1.1
@@ -462,7 +486,7 @@ def slide_gancho(prs, sl, lang):
 def slide_cierre(prs, sl, cfg, lang):
     set_bg(sl, OR)
     add_text(sl, 0.4, 0.28, 7.0, 0.42, cfg.get('name',''), 13, bold=True, color=WH)
-    add_text(sl, 0.4, 0.7, 7.0, 0.35, cfg.get('title',''), 11, color=hc('FFD0B0'))
+    add_text(sl, 0.4, 0.7, 7.0, 0.35, translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'))
     add_text(sl, 7.0, 0.28, 5.9, 0.42, 'KRUGER CORPORATION', 13,
              bold=True, color=WH, align=PP_ALIGN.RIGHT)
     add_text(sl, 7.0, 0.7, 5.9, 0.35, 'krugerworldwide.com', 11,
@@ -475,8 +499,8 @@ def slide_cierre(prs, sl, cfg, lang):
     contact = f"{email}  ·  {phone}" if phone else email
     add_text(sl, 0, 5.1, 13.33, 0.45, contact, 15, bold=True, color=WH, align=PP_ALIGN.CENTER)
     if cfg.get('client'):
-        add_text(sl, 0, 5.65, 13.33, 0.38,
-                 f"Preparado especialmente para {cfg['client']}" if lang=='es' else f"Specially prepared for {cfg['client']}",
+        label = f"Specially prepared for {cfg['client']}" if lang=='en' else f"Preparado especialmente para {cfg['client']}"
+        add_text(sl, 0, 5.65, 13.33, 0.38, label,
                  12, color=hc('FFE8D6'), align=PP_ALIGN.CENTER, italic=True)
     add_text(sl, 0.4, 7.2, 5.0, 0.22, '© 2026 KRUGER CORP.', 8, color=WH)
     add_text(sl, 8.0, 7.2, 5.0, 0.22,
@@ -490,7 +514,7 @@ def generate():
     data = request.json
     vertical = data.get('vertical', {})
     cfg = data.get('cfg', {})
-    lang = data.get('lang', 'es')  # 'es' o 'en'
+    lang = data.get('lang', 'es')
 
     prs = Presentation()
     prs.slide_width  = W
