@@ -33,21 +33,22 @@ LOGO_B = 'https://res.cloudinary.com/dpcojkrta/image/upload/v1780944928/Logo_Kru
 
 SLIDE_IMGS = {
     'portada':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100423/Imagen1_hsptrs.png',
-    'disclaimer':   'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100456/Imagen2_a51brf.png',
-    'quienes':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100548/Imagen4_phr6cl.png',
-    'porque':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100592/Imagen5_nxwp0o.png',
+    'disclaimer_a': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781111905/Imagen18_pch1nk.png',
+    'disclaimer_b': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781112013/Imagen19_x9n0hs.png',
+    'quienes':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781112125/Imagen21_dke4h5.png',
+    'porque':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781112100/Imagen20_ea9gtb.png',
     'como':         'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100646/Imagen8_cdxxs3.png',
     'dolores':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781109915/Imagen17_xlujoc.png',
     'case_intro_a': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100753/Imagen9_kechhv.png',
     'case_detail_a':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100802/Imagen10_lhl5is.png',
-    'case_intro_b': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100834/Imagen11_qjevxo.png',
+    'case_intro_b': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781112197/Imagen22_sohmuo.png',
     'case_detail_b':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100894/Imagen13_bddubq.png',
     'gancho_main':  'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100894/Imagen13_bddubq.png',
     'cierre':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100952/Imagen16_xl4ujj.png',
 }
 
 PARTNER_IMGS = [
-    'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019937/Imagen8_ljshve.png',
+    'https://res.cloudinary.com/dpcojkrta/image/upload/v1781112250/Imagen23_rx91eh.png',
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019958/Imagen7_vlvu1d.png',
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019980/Imagen6_do5kih.png',
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019998/Imagen5_cvmpwy.png',
@@ -214,7 +215,8 @@ def slide_portada(prs, sl, cfg, lang):
 # SLIDE 2 — DISCLAIMER
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
-    add_logo(sl, SLIDE_IMGS['disclaimer'], 6.452, 1.05, 6.878, 6.45)
+    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 6.8, 0.0, 6.53, 7.5)
+    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 5.8, 1.8, 4.5, 5.5)
     add_logo(sl, LOGO_B, 0.75, 0.5, 1.764, 0.55)
     add_text(sl, 0.687, 2.144, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
     add_rect(sl, 0.782, 3.199, 0.85, 0.05, DK)
@@ -239,10 +241,16 @@ def slide_quienes(prs, sl, lang):
     add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
     add_logo(sl, LOGO_B, 0.6, 0.3, 1.764, 0.55)
     add_rect(sl, 0.6, 1.0, 1.5, 0.05, OR)
-    add_runs(sl, 0.6, 1.15, 6.5, 0.4, [
-        ('BUILDING SOLUTIONS. ', 14, True, DK),
-        ('DELIVERING SUCCESS.', 14, True, OR),
-    ])
+    if lang == 'en':
+        add_runs(sl, 0.6, 1.15, 6.5, 0.4, [
+            ('BUILDING SOLUTIONS. ', 14, True, DK),
+            ('DELIVERING SUCCESS.', 14, True, OR),
+        ])
+    else:
+        add_runs(sl, 0.6, 1.15, 6.5, 0.4, [
+            ('CONSTRUYENDO SOLUCIONES. ', 14, True, DK),
+            ('ENTREGANDO ÉXITO.', 14, True, OR),
+        ])
     if lang == 'en':
         add_runs(sl, 0.6, 1.65, 5.8, 1.4, [
             ('Kruger creates web and mobile applications that help companies turn ', 19, False, DK),
@@ -271,7 +279,10 @@ def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
     add_logo(sl, LOGO_W, 0.212, 0.078, 1.443, 0.45)
     add_text(sl, 7.4, 0.033, 5.5, 3.635, '01', 210, bold=True, color=WH)
-    add_text(sl, 6.9, 5.2, 6.0, 1.1, 'WHY', 60, color=WH)
+    if lang == 'en':
+        add_text(sl, 6.9, 5.2, 6.0, 1.1, 'WHY', 60, color=WH)
+    else:
+        add_text(sl, 6.9, 5.2, 6.0, 1.1, 'POR QUÉ', 50, color=WH)
     add_text(sl, 6.9, 6.1, 6.3, 1.3, 'KRUGER', 75, bold=True, color=WH)
     if lang == 'en':
         puntos = [
@@ -297,10 +308,16 @@ def slide_porque(prs, sl, lang):
 def slide_como(prs, sl, lang):
     set_bg(sl, GR)
     add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
-    add_runs(sl, 0.6, 0.2, 7.5, 1.3, [
-        ('What ', 63, True, DK),
-        ('We Build', 63, True, OR),
-    ])
+    if lang == 'en':
+        add_runs(sl, 0.6, 0.2, 7.5, 1.3, [
+            ('What ', 63, True, DK),
+            ('We Build', 63, True, OR),
+        ])
+    else:
+        add_runs(sl, 0.6, 0.2, 7.5, 1.3, [
+            ('Qué ', 63, True, DK),
+            ('Construimos', 63, True, OR),
+        ])
     if lang == 'en':
         add_runs(sl, 0.6, 1.6, 7.0, 0.55, [
             ('We build ', 17, False, LGY),
@@ -352,7 +369,7 @@ def slide_dolores(prs, sl, vertical_nm, pain, lang):
         (vertical_nm, 32, True, WH),
     ])
     add_rect(sl, 0.4, 1.15, 12.5, 0.05, hc('FF5B0066'))
-    add_logo(sl, LOGO_B, 11.156, 0.2, 1.603, 0.5)
+    add_logo(sl, LOGO_W, 11.156, 0.2, 1.603, 0.5)
     # imagen dolores en zona izquierda
     add_logo(sl, SLIDE_IMGS['dolores'], 0.884, 1.275, 1.752, 6.0)
     # 6 tarjetas: 2 columnas x 3 filas
