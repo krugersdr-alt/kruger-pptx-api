@@ -272,7 +272,15 @@ def slide_quienes(prs, sl, lang):
         y = ys[idx]
         add_rect(sl, 0.6, y, 0.38, 0.38, WH, OR)
         add_text(sl, 1.15, y, 5.5, 0.38, f'{v}  {l}', 14, bold=True, color=OR)
-    add_logo(sl, SLIDE_IMGS['quienes'], 7.1, 0.3, 4.599, 6.9)
+    # Imagen24 reemplaza bloque de viñetas — lado derecho completo sin espacio
+    try:
+        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['quienes']), i(7.1), i(0), i(6.23), i(7.5))
+    except Exception as e:
+        print(f'quienes img error: {e}')
+    try:
+        sl.shapes.add_picture(fetch_image('https://res.cloudinary.com/dpcojkrta/image/upload/v1781122425/Imagen24_piciph.png'), i(0.6), i(3.15), i(5.9), i(4.2))
+    except Exception as e:
+        print(f'imagen24 error: {e}')
 
 # SLIDE 4 — WHY KRUGER
 def slide_porque(prs, sl, lang):
@@ -410,9 +418,9 @@ def slide_case_intro(prs, sl, case, dark, lang):
              13, bold=True, color=hc('999999') if dark else hc('777777'))
     add_logo(sl, logo_url, 0.398, 0.185, 1.603, 0.5)
     if dark:
-        add_logo(sl, SLIDE_IMGS['case_intro_a'], 6.9, 0.918, 5.9, 5.563)
-    else:
         add_logo(sl, SLIDE_IMGS['case_intro_b'], 6.9, 0.918, 5.9, 5.563)
+    else:
+        add_logo(sl, SLIDE_IMGS['case_detail_a'], 6.9, 0.918, 5.9, 5.563)
 
 # SLIDE 8/10/... — CASE DETAIL
 def slide_case_detail(prs, sl, case, lang):
@@ -422,7 +430,7 @@ def slide_case_detail(prs, sl, case, lang):
     add_logo(sl, LOGO_B, 11.5, 0.3, 1.6, 0.499)
     add_rect(sl, 0, 1.25, 13.33, 0.6, hc('111111'))
     add_text(sl, 0.4, 1.32, 12.0, 0.45, case['sub'].upper(), 16, bold=True, color=WH)
-    add_logo(sl, SLIDE_IMGS['case_detail_a'], 0.3, 1.95, 4.8, 3.975)
+    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.3, 1.95, 4.8, 3.975)
     if lang == 'en':
         labels = ['CHALLENGE', 'APPROACH', 'OUTCOME']
     else:
