@@ -355,8 +355,7 @@ def slide_case_intro(prs, sl, case, dark, lang):
     if dark:
         add_logo(sl, SLIDE_IMGS['case_intro_a'], 7.1, 0.3, 5.9, 6.9)
     else:
-        add_logo(sl, SLIDE_IMGS['case_intro_b'],  7.1, 0.3, 5.9, 6.9)
-        add_logo(sl, SLIDE_IMGS['case_intro_b2'], 7.1, 0.3, 2.9, 6.9)
+        add_logo(sl, SLIDE_IMGS['case_intro_b'], 7.1, 0.3, 5.9, 6.9)
 
 def slide_case_detail(prs, sl, case, lang):
     set_bg(sl, BK)
