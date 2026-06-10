@@ -31,6 +31,24 @@ OR2 = RGBColor(0xFB, 0x79, 0x01)
 LOGO_W = 'https://res.cloudinary.com/dpcojkrta/image/upload/v1780945082/Logo_Kruger_naranja_blanco_negro_y_plomo-01_mmdzkk.png'
 LOGO_B = 'https://res.cloudinary.com/dpcojkrta/image/upload/v1780944928/Logo_Kruger_naranja_blanco_negro_y_plomo-02_ynrqui.png'
 
+# Imágenes fijas por slide (orden definido)
+SLIDE_IMGS = {
+    'portada':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100423/Imagen1_hsptrs.png',
+    'disclaimer':   'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100456/Imagen2_a51brf.png',
+    'quienes':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100548/Imagen4_phr6cl.png',
+    'porque':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100592/Imagen5_nxwp0o.png',
+    'como':         'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100646/Imagen8_cdxxs3.png',
+    'dolores':      'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100690/Imagen14_uzhsye.png',
+    'case_intro_a': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100753/Imagen9_kechhv.png',
+    'case_detail_a':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100802/Imagen10_lhl5is.png',
+    'case_intro_b': 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100834/Imagen11_qjevxo.png',
+    'case_intro_b2':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100881/Imagen12_jj8nsf.png',
+    'case_detail_b':'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100894/Imagen13_bddubq.png',
+    'gancho_main':  'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100894/Imagen13_bddubq.png',
+    'gancho_side':  'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100952/Imagen16_xl4ujj.png',
+    'cierre':       'https://res.cloudinary.com/dpcojkrta/image/upload/v1781100952/Imagen16_xl4ujj.png',
+}
+
 # Partner images en orden
 PARTNER_IMGS = [
     'https://res.cloudinary.com/dpcojkrta/image/upload/v1781019937/Imagen8_ljshve.png',
@@ -126,7 +144,7 @@ def T(lang, es, en):
 
 def slide_portada(prs, sl, cfg, lang):
     set_bg(sl, OR)
-    add_ph(sl, 5.98, 0, 7.35, 7.5, T(lang,'Imagen principal','Main image'))
+    add_logo(sl, SLIDE_IMGS['portada'], 5.98, 0, 7.35, 7.5)
     add_logo(sl, LOGO_W, 0.4, 0.25, 2.5, 0.62)
     add_text(sl, 8.5, 0.22, 4.6, 0.4, cfg.get('name',''), 13, bold=True, color=WH, align=PP_ALIGN.RIGHT)
     add_text(sl, 8.5, 0.6, 4.6, 0.35, cfg.get('title',''), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
@@ -151,8 +169,7 @@ def slide_portada(prs, sl, cfg, lang):
 
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
-    add_rect(sl, 8.0, 1.0, 4.8, 5.5, hc('C8C4C6'))
-    add_rect(sl, 9.5, 0.5, 3.5, 6.5, hc('D4D0D2'))
+    add_logo(sl, SLIDE_IMGS['disclaimer'], 7.8, 0, 5.53, 7.5)
     add_logo(sl, LOGO_B, 0.75, 0.5, 2.2, 0.55)
     add_text(sl, 0.75, 1.25, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
     add_rect(sl, 0.75, 2.3, 0.85, 0.05, DK)
@@ -203,7 +220,7 @@ def slide_quienes(prs, sl, lang):
         y = 3.2 + idx * 0.95
         add_rect(sl, 0.6, y, 0.38, 0.38, WH, OR)
         add_text(sl, 1.15, y, 5.5, 0.38, f'{v}  {l}', 14, bold=True, color=OR)
-    add_ph(sl, 7.1, 0.3, 5.9, 6.9, T(lang,'Foto persona · traje naranja','Person photo · orange suit'))
+    add_logo(sl, SLIDE_IMGS['quienes'], 7.1, 0.3, 5.9, 6.9)
 
 def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
@@ -227,7 +244,7 @@ def slide_porque(prs, sl, lang):
             (pt, 13, False, hc('FFE0CC')),
         ], wrap=True)
     add_logo(sl, LOGO_W, 11.5, 6.85, 1.6, 0.45)
-    add_ph(sl, 0.3, 0.3, 6.3, 6.9, T(lang,'Persona editorial · traje naranja','Editorial person · orange suit'))
+    add_logo(sl, SLIDE_IMGS['porque'], 0.3, 0.3, 6.3, 6.9)
 
 def slide_como(prs, sl, lang):
     set_bg(sl, GR)
@@ -278,7 +295,7 @@ def slide_como(prs, sl, lang):
         (footer[0], 13, True, OR),
         (footer[1], 13, False, DK),
     ])
-    add_ph(sl, 7.1, 0.3, 5.9, 6.9, T(lang,'Mockups multi-dispositivo','Multi-device mockups'))
+    add_logo(sl, SLIDE_IMGS['como'], 7.1, 0.3, 5.9, 6.9)
 
 def slide_dolores(prs, sl, vertical_nm, pain, lang):
     set_bg(sl, DK)
@@ -287,7 +304,7 @@ def slide_dolores(prs, sl, vertical_nm, pain, lang):
         (vertical_nm, 32, True, WH),
     ])
     add_rect(sl, 0.4, 1.15, 12.5, 0.05, hc('FF5B0066'))
-    add_ph(sl, 0.4, 1.3, 2.6, 5.9, T(lang,'Ejecutivo analítico','Executive photo'))
+    add_logo(sl, SLIDE_IMGS['dolores'], 0.4, 1.3, 2.6, 5.9)
     for idx, pt in enumerate(pain):
         col = 0 if idx < 3 else 1
         row = idx % 3
@@ -317,7 +334,11 @@ def slide_case_intro(prs, sl, case, dark, lang):
              T(lang,'CASO DE ÉXITO · KRUGER WORLDWIDE','SUCCESS STORY · KRUGER WORLDWIDE'),
              13, bold=True, color=hc('999999') if dark else hc('777777'))
     add_logo(sl, logo_url, 0.6, 5.65, 2.0, 0.5)
-    add_ph(sl, 7.1, 0.3, 5.9, 6.9, T(lang,'Foto profesional · traje naranja','Professional photo · orange suit'))
+    if dark:
+        add_logo(sl, SLIDE_IMGS['case_intro_a'], 7.1, 0.3, 5.9, 6.9)
+    else:
+        add_logo(sl, SLIDE_IMGS['case_intro_b'],  7.1, 0.3, 5.9, 6.9)
+        add_logo(sl, SLIDE_IMGS['case_intro_b2'], 7.1, 0.3, 2.9, 6.9)
 
 def slide_case_detail(prs, sl, case, lang):
     set_bg(sl, BK)
@@ -326,7 +347,7 @@ def slide_case_detail(prs, sl, case, lang):
     add_logo(sl, LOGO_B, 11.5, 0.3, 1.6, 0.55)
     add_rect(sl, 0, 1.25, 13.33, 0.6, hc('111111'))
     add_text(sl, 0.4, 1.32, 12.0, 0.45, case['sub'].upper(), 16, bold=True, color=WH)
-    add_ph(sl, 0.3, 1.95, 4.8, 5.3, T(lang,'Screenshots · Persona','Screenshots · Person'))
+    add_logo(sl, SLIDE_IMGS['case_detail_a'], 0.3, 1.95, 4.8, 5.3)
     if lang == 'en':
         labels = ['CHALLENGE', 'APPROACH', 'OUTCOME']
     else:
@@ -419,7 +440,8 @@ def slide_gancho(prs, sl, lang):
                  'Kruger ha transformado más de 1500 productos digitales en 14 países.',
                  13, color=LGY, wrap=True)
     add_rect(sl, 1.2, 4.65, 1.5, 0.08, OR)
-    add_ph(sl, 9.1, 0.3, 3.9, 6.9, T(lang,'Imagen gancho','Hook image'))
+    add_logo(sl, SLIDE_IMGS['gancho_main'], 9.1, 0.3, 3.9, 6.9)
+    add_logo(sl, SLIDE_IMGS['gancho_side'], 9.1, 0.3, 1.9, 6.9)
 
 def slide_cierre(prs, sl, cfg, lang):
     set_bg(sl, OR)
@@ -431,7 +453,7 @@ def slide_cierre(prs, sl, cfg, lang):
              color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     add_logo(sl, LOGO_W, 4.8, 1.5, 3.7, 0.92)
     add_rect(sl, 3.0, 2.65, 7.3, 0.06, hc('FFFFFF88'))
-    add_ph(sl, 5.65, 2.85, 2.0, 2.0, T(lang,'Camaleón 3D','3D Chameleon'))
+    add_logo(sl, SLIDE_IMGS['cierre'], 5.65, 2.85, 2.0, 2.0)
     email = cfg.get('email','worldwide@krugercorp.com')
     phone = cfg.get('phone','')
     contact = f"{email}  ·  {phone}" if phone else email
