@@ -213,22 +213,28 @@ def slide_portada(prs, sl, cfg, lang):
         ], wrap=True)
 
 # SLIDE 2 — DISCLAIMER
+# Cambios v14 vs v13:
+#   Picture 1 (imagen principal): left 11.62, top 0.93, width 22.24cm, height 17.15cm
+#     → en inches: left=4.575, top=0.366, width=8.756, height=6.752
+#   Picture 2 (imagen secundaria): left 3.81cm, top 12.19cm, width 10.16cm, height 5.89cm
+#     → en inches: left=1.5, top=4.799, width=4.0, height=2.319
+#   TextBox 6 (párrafo): top 8.00cm → en inches: top=3.150
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
-    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 6.5, 0.0, 6.83, 7.0)
-    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 1.5, 4.8, 4.0, 2.5)
+    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 4.575, 0.366, 8.756, 6.752)
+    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 1.5, 4.799, 4.0, 2.319)
     add_logo(sl, LOGO_B, 0.75, 0.5, 1.764, 0.55)
     add_text(sl, 0.687, 1.6, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
     add_rect(sl, 0.782, 2.65, 0.85, 0.05, DK)
     if lang == 'en':
-        add_runs(sl, 0.75, 3.606, 5.508, 1.818, [
+        add_runs(sl, 0.75, 3.150, 5.508, 1.818, [
             ('The information contained in this document is ', 17, False, DK),
             ('confidential, privileged, and only for the information of the intended recipient', 17, True, DK),
             (', and may not be used, published, or redistributed ', 17, False, DK),
             ('without the prior written consent of Kruger Corporation.', 17, True, DK),
         ], wrap=True)
     else:
-        add_runs(sl, 0.75, 3.606, 5.508, 1.818, [
+        add_runs(sl, 0.75, 3.150, 5.508, 1.818, [
             ('La información contenida en este documento es ', 17, False, DK),
             ('confidencial, privilegiada y solo para uso del destinatario previsto', 17, True, DK),
             (', y no puede ser usada, publicada ni redistribuida ', 17, False, DK),
@@ -257,22 +263,16 @@ def slide_quienes(prs, sl, lang):
             ('complex digital products', 19, True, DK),
             (' into simple, user-centered experiences.', 19, False, DK),
         ], wrap=True)
-        stats = [('30+','YEARS OF INNOVATION'),('1500+','PROJECTS DELIVERED'),
-                 ('450+','CERTIFIED EXPERTS'),('14','COUNTRIES WORLDWIDE')]
     else:
         add_runs(sl, 0.6, 1.65, 5.8, 1.4, [
             ('Kruger crea aplicaciones web y móviles que ayudan a las empresas a convertir ', 19, False, DK),
             ('productos digitales complejos', 19, True, DK),
             (' en experiencias simples y centradas en el usuario.', 19, False, DK),
         ], wrap=True)
-        stats = [('30+','AÑOS DE INNOVACIÓN'),('1500+','PROYECTOS ENTREGADOS'),
-                 ('450+','EXPERTOS CERTIFICADOS'),('14','PAÍSES DE PRESENCIA GLOBAL')]
-    # Imagen derecha full height desde y=0
     try:
         sl.shapes.add_picture(fetch_image(SLIDE_IMGS['quienes']), i(8.5), i(0), i(4.83), i(7.5))
     except Exception as e:
         print(f'quienes img error: {e}')
-    # Imagen24 reemplaza stats — tamaño proporcional
     add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781122425/Imagen24_piciph.png', 0.6, 3.0, 7.5, 4.35)
 
 # SLIDE 4 — WHY KRUGER
@@ -374,9 +374,7 @@ def slide_dolores(prs, sl, vertical_nm, pain, lang):
     ])
     add_rect(sl, 0.4, 1.15, 12.5, 0.05, hc('FF5B0066'))
     add_logo(sl, LOGO_W, 11.156, 0.2, 1.603, 0.5)
-    # imagen dolores en zona izquierda
     add_logo(sl, SLIDE_IMGS['dolores'], 0.884, 1.275, 1.752, 6.0)
-    # 6 tarjetas: 2 columnas x 3 filas
     xs = [3.25, 8.05]
     ys = [1.35, 3.35, 5.35]
     for idx, pt in enumerate(pain[:6]):
@@ -416,6 +414,9 @@ def slide_case_intro(prs, sl, case, dark, lang):
         add_logo(sl, SLIDE_IMGS['case_detail_a'], 7.0, 0.0, 6.33, 7.5)
 
 # SLIDE 8/10/... — CASE DETAIL
+# Cambios v14 vs v13:
+#   Picture 6 (imagen izquierda): left=0, top=5.08cm, width=13.85cm, height=13.06cm
+#     → en inches: left=0.0, top=2.0, width=5.453, height=5.142
 def slide_case_detail(prs, sl, case, lang):
     set_bg(sl, BK)
     add_rect(sl, 0, 0, 13.33, 1.25, GR)
@@ -423,7 +424,7 @@ def slide_case_detail(prs, sl, case, lang):
     add_logo(sl, LOGO_B, 11.5, 0.3, 1.6, 0.499)
     add_rect(sl, 0, 1.25, 13.33, 0.6, hc('111111'))
     add_text(sl, 0.4, 1.32, 12.0, 0.45, case['sub'].upper(), 16, bold=True, color=WH)
-    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.3, 1.95, 4.8, 3.975)
+    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.0, 2.0, 5.453, 5.142)
     if lang == 'en':
         labels = ['CHALLENGE', 'APPROACH', 'OUTCOME']
     else:
