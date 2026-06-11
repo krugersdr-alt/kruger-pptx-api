@@ -215,8 +215,8 @@ def slide_portada(prs, sl, cfg, lang):
 # SLIDE 2 — DISCLAIMER
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
-    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 6.8, 0.5, 6.2, 6.0)
-    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 0.3, 5.0, 4.5, 2.5)
+    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 6.5, 0.0, 6.83, 7.0)
+    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 1.5, 4.8, 4.0, 2.5)
     add_logo(sl, LOGO_B, 0.75, 0.5, 1.764, 0.55)
     add_text(sl, 0.687, 1.6, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
     add_rect(sl, 0.782, 2.65, 0.85, 0.05, DK)
@@ -267,17 +267,12 @@ def slide_quienes(prs, sl, lang):
         ], wrap=True)
         stats = [('30+','AÑOS DE INNOVACIÓN'),('1500+','PROYECTOS ENTREGADOS'),
                  ('450+','EXPERTOS CERTIFICADOS'),('14','PAÍSES DE PRESENCIA GLOBAL')]
-    ys = [3.2, 4.15, 5.1, 6.05]
-    for idx,(v,l) in enumerate(stats):
-        y = ys[idx]
-        add_rect(sl, 0.6, y, 0.38, 0.38, WH, OR)
-        add_text(sl, 1.15, y, 5.5, 0.38, f'{v}  {l}', 14, bold=True, color=OR)
-    # Imagen derecha full height, más angosta
+    # Imagen derecha full height desde y=0
     try:
         sl.shapes.add_picture(fetch_image(SLIDE_IMGS['quienes']), i(8.5), i(0), i(4.83), i(7.5))
     except Exception as e:
         print(f'quienes img error: {e}')
-    # Imagen24 a tamaño nativo en zona de stats
+    # Imagen24 reemplaza stats — tamaño proporcional
     add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781122425/Imagen24_piciph.png', 0.6, 3.0, 7.5, 4.35)
 
 # SLIDE 4 — WHY KRUGER
@@ -416,9 +411,9 @@ def slide_case_intro(prs, sl, case, dark, lang):
              13, bold=True, color=hc('999999') if dark else hc('777777'))
     add_logo(sl, logo_url, 0.398, 0.185, 1.603, 0.5)
     if dark:
-        add_logo(sl, SLIDE_IMGS['case_intro_b'], 6.2, 0.0, 7.13, 7.5)
+        add_logo(sl, SLIDE_IMGS['case_intro_b'], 7.0, 0.0, 6.33, 7.5)
     else:
-        add_logo(sl, SLIDE_IMGS['case_detail_a'], 6.2, 0.0, 7.13, 7.5)
+        add_logo(sl, SLIDE_IMGS['case_detail_a'], 7.0, 0.0, 6.33, 7.5)
 
 # SLIDE 8/10/... — CASE DETAIL
 def slide_case_detail(prs, sl, case, lang):
