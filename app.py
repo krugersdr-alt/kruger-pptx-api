@@ -189,25 +189,25 @@ def T(lang, es, en):
 # SLIDE 1 — PORTADA
 def slide_portada(prs, sl, cfg, lang):
     set_bg(sl, OR)
-    add_logo(sl, SLIDE_IMGS['portada'], 5.98, 0, 7.35, 7.5)
+    add_logo(sl, SLIDE_IMGS['portada'], 6.6825, 0.0527, 5.6261, 7.5)
     add_logo(sl, LOGO_W, 0.4, 0.25, 1.988, 0.62)
     add_text(sl, 8.5, 0.22, 4.6, 0.4,
              cfg.get('name',''), 13, bold=True, color=WH, align=PP_ALIGN.RIGHT)
     add_text(sl, 8.5, 0.6, 4.6, 0.35,
              translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     if lang == 'en':
-        add_text(sl, 0.4, 2.2, 5.4, 3.2,
+        add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
                  42, bold=True, color=WH)
-        add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
+        add_runs(sl, 0.4, 6.5181, 7.4906, 0.9, [
             ('Designing scalable digital experiences for ', 17, False, WH),
             ('enterprise, telecom, fintech and customer ecosystems.', 17, True, WH),
         ], wrap=True)
     else:
-        add_text(sl, 0.4, 2.2, 5.4, 3.2,
+        add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
                  38, bold=True, color=WH)
-        add_runs(sl, 0.4, 5.9, 5.4, 0.9, [
+        add_runs(sl, 0.4, 6.5181, 7.4906, 0.9, [
             ('Diseñando experiencias digitales escalables para ', 17, False, WH),
             ('enterprise, telecom, fintech y ecosistemas de cliente.', 17, True, WH),
         ], wrap=True)
@@ -221,20 +221,20 @@ def slide_portada(prs, sl, cfg, lang):
 #   TextBox 6 (párrafo): top 8.00cm → en inches: top=3.150
 def slide_disclaimer(prs, sl, lang):
     set_bg(sl, GY2)
-    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 4.575, 0.366, 8.756, 6.752)
-    add_logo(sl, SLIDE_IMGS['disclaimer_a'], 1.5, 4.799, 4.0, 2.319)
+    add_logo(sl, SLIDE_IMGS['disclaimer_b'], 4.2185, 0.5, 9.1101, 7.027)
+    add_logo(sl, SLIDE_IMGS['disclaimer_a'], -0.6134, 3.834, 8.0004, 4.6395)
     add_logo(sl, LOGO_B, 0.75, 0.5, 1.764, 0.55)
-    add_text(sl, 0.687, 1.6, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
-    add_rect(sl, 0.782, 2.65, 0.85, 0.05, DK)
+    add_text(sl, 0.687, 1.025, 6.5, 1.0, 'Disclaimer', 47, bold=True, color=OR)
+    add_rect(sl, 0.782, 1.8795, 0.85, 0.05, DK)
     if lang == 'en':
-        add_runs(sl, 0.75, 3.150, 5.508, 1.818, [
+        add_runs(sl, 0.687, 2.05, 4.413, 1.818, [
             ('The information contained in this document is ', 17, False, DK),
             ('confidential, privileged, and only for the information of the intended recipient', 17, True, DK),
             (', and may not be used, published, or redistributed ', 17, False, DK),
             ('without the prior written consent of Kruger Corporation.', 17, True, DK),
         ], wrap=True)
     else:
-        add_runs(sl, 0.75, 3.150, 5.508, 1.818, [
+        add_runs(sl, 0.687, 2.05, 4.413, 1.818, [
             ('La información contenida en este documento es ', 17, False, DK),
             ('confidencial, privilegiada y solo para uso del destinatario previsto', 17, True, DK),
             (', y no puede ser usada, publicada ni redistribuida ', 17, False, DK),
@@ -248,12 +248,12 @@ def slide_quienes(prs, sl, lang):
     add_logo(sl, LOGO_B, 0.6, 0.3, 1.764, 0.55)
     add_rect(sl, 0.6, 1.0, 1.5, 0.05, OR)
     if lang == 'en':
-        add_runs(sl, 0.6, 1.15, 6.5, 0.4, [
+        add_runs(sl, 0.6, 1.225, 6.5, 0.4, [
             ('BUILDING SOLUTIONS. ', 14, True, DK),
             ('DELIVERING SUCCESS.', 14, True, OR),
         ])
     else:
-        add_runs(sl, 0.6, 1.15, 6.5, 0.4, [
+        add_runs(sl, 0.6, 1.225, 6.5, 0.4, [
             ('CONSTRUYENDO SOLUCIONES. ', 14, True, DK),
             ('ENTREGANDO ÉXITO.', 14, True, OR),
         ])
@@ -270,25 +270,25 @@ def slide_quienes(prs, sl, lang):
             (' en experiencias simples y centradas en el usuario.', 19, False, DK),
         ], wrap=True)
     try:
-        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['quienes']), i(8.5), i(0), i(4.83), i(7.5))
+        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['quienes']), i(8.2299), i(-0.15), i(5.1), i(7.675))
     except Exception as e:
         print(f'quienes img error: {e}')
-    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781122425/Imagen24_piciph.png', 0.6, 3.0, 7.5, 4.35)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781122425/Imagen24_piciph.png', 0.6, 3.15, 7.5, 3.456)
 
 # SLIDE 4 — WHY KRUGER
 def slide_porque(prs, sl, lang):
     set_bg(sl, OR)
     try:
-        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(1.93), i(0.0), i(4.94), i(7.5))
+        sl.shapes.add_picture(fetch_image(SLIDE_IMGS['porque']), i(0.18), i(0.5349), i(6.87), i(10.4302))
     except Exception as e:
         print(f'porque img error: {e}')
     add_logo(sl, LOGO_W, 0.212, 0.078, 1.443, 0.45)
     add_text(sl, 7.4, 0.033, 5.5, 3.635, '01', 210, bold=True, color=WH)
     if lang == 'en':
-        add_text(sl, 6.9, 5.2, 6.0, 1.1, 'WHY', 60, color=WH)
+        add_text(sl, 7.15, 5.2, 6.0, 1.1, 'WHY', 60, color=WH)
     else:
-        add_text(sl, 6.9, 5.2, 6.0, 1.1, 'POR QUÉ', 50, color=WH)
-    add_text(sl, 6.9, 6.1, 6.3, 1.3, 'KRUGER', 75, bold=True, color=WH)
+        add_text(sl, 7.15, 5.2, 6.0, 1.1, 'POR QUÉ', 50, color=WH)
+    add_text(sl, 7.15, 6.06, 6.3, 1.3, 'KRUGER', 75, bold=True, color=WH)
     if lang == 'en':
         puntos = [
             'We transform businesses with human-centered technology',
@@ -301,9 +301,9 @@ def slide_porque(prs, sl, lang):
             '14 países · 30 años · 1500+ proyectos entregados',
             'Expertos en sectores regulados y ecosistemas enterprise',
         ]
-    ys = [3.445, 4.03, 4.65]
+    ys = [3.42, 3.9815, 4.5908]
     for idx, pt in enumerate(puntos):
-        add_runs(sl, 6.9, ys[idx], 5.9, 0.72, [
+        add_runs(sl, 7.15, ys[idx], 5.9, 0.72, [
             (f'{idx+1}.', 13, True, hc('FFE0CC')),
             (f' {pt}', 13, False, hc('FFE0CC')),
         ], wrap=True)
@@ -362,8 +362,9 @@ def slide_como(prs, sl, lang):
         ('HUMAN-CENTERED ', 13, True, OR),
         ('digital products powered by INFINITE DIGITAL TECHNOLOGY.', 13, False, DK),
     ])
-    add_logo(sl, SLIDE_IMGS['como'], 5.964, 1.229, 6.658, 5.196)
-    add_logo(sl, LOGO_B, 11.236, 6.773, 1.764, 0.55)
+    add_logo(sl, SLIDE_IMGS['como'], 5.209, 1.6, 8.1549, 5.921)
+    add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
+    add_logo(sl, LOGO_W, 10.423, 0.225, 2.1774, 0.679)
 
 # SLIDE 6 — DOLORES
 def slide_dolores(prs, sl, vertical_nm, pain, lang):
@@ -374,19 +375,19 @@ def slide_dolores(prs, sl, vertical_nm, pain, lang):
     ])
     add_rect(sl, 0.4, 1.15, 12.5, 0.05, hc('FF5B0066'))
     add_logo(sl, LOGO_W, 11.156, 0.2, 1.603, 0.5)
-    add_logo(sl, SLIDE_IMGS['dolores'], 0.884, 1.275, 1.752, 6.0)
-    xs = [3.25, 8.05]
+    add_logo(sl, SLIDE_IMGS['dolores'], 0.6, 1.275, 2.5, 6.0)
+    xs = [3.35, 8.15]
     ys = [1.35, 3.35, 5.35]
     for idx, pt in enumerate(pain[:6]):
         col = 0 if idx < 3 else 1
         row = idx % 3
         x = xs[col]
         y = ys[row]
-        add_rect(sl, x, y, 4.6, 1.85, hc('2E2E2E'), hc('FF5B0055'))
+        add_rect(sl, x, y, 4.4, 1.85, hc('2E2E2E'), hc('FF5B0055'))
         words = pt.split()
         title_txt = ' '.join(words[:4])
-        add_text(sl, x+0.2, y+0.12, 4.2, 0.45, title_txt, 13, bold=True, color=OR)
-        add_text(sl, x+0.2, y+0.6, 4.2, 1.1, pt, 11, color=MGY, wrap=True)
+        add_text(sl, x+0.2, y+0.12, 4.0, 0.45, title_txt, 13, bold=True, color=OR)
+        add_text(sl, x+0.2, y+0.6, 4.0, 1.1, pt, 11, color=MGY, wrap=True)
 
 # SLIDE 7/9/... — CASE INTRO
 def slide_case_intro(prs, sl, case, dark, lang):
@@ -409,9 +410,9 @@ def slide_case_intro(prs, sl, case, dark, lang):
              13, bold=True, color=hc('999999') if dark else hc('777777'))
     add_logo(sl, logo_url, 0.398, 0.185, 1.603, 0.5)
     if dark:
-        add_logo(sl, SLIDE_IMGS['case_intro_b'], 7.0, 0.0, 6.33, 7.5)
+        add_logo(sl, SLIDE_IMGS['case_intro_b'], 7.0, 0.0, 5.9981, 7.5)
     else:
-        add_logo(sl, SLIDE_IMGS['case_detail_a'], 7.0, 0.0, 6.33, 7.5)
+        add_logo(sl, SLIDE_IMGS['case_detail_a'], 6.2953, 0.0, 7.0347, 7.5)
 
 # SLIDE 8/10/... — CASE DETAIL
 # Cambios v14 vs v13:
@@ -424,18 +425,32 @@ def slide_case_detail(prs, sl, case, lang):
     add_logo(sl, LOGO_B, 11.5, 0.3, 1.6, 0.499)
     add_rect(sl, 0, 1.25, 13.33, 0.6, hc('111111'))
     add_text(sl, 0.4, 1.32, 12.0, 0.45, case['sub'].upper(), 16, bold=True, color=WH)
-    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.0, 2.0, 5.453, 5.142)
+    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.0, 2.0718, 5.384, 5.4198)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 5.1464, 2.333, 1.6661, 1.2337)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 5.4237, 3.97, 1.5485, 1.3062)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 5.65, 5.83, 1.3282, 1.286)
     if lang == 'en':
         labels = ['CHALLENGE', 'APPROACH', 'OUTCOME']
     else:
         labels = ['RETO', 'ENFOQUE', 'RESULTADO']
     keys = ['ch', 'ap', 'out']
-    ys = [2.0, 3.82, 5.64]
+    ys_8  = [2.0,  3.82, 5.64]
+    ys_10 = [1.95, 3.77, 5.59]
+    rect_left_8  = 6.725; rect_w_8  = 6.275
+    rect_left_10 = 6.55;  rect_w_10 = 6.75
+    txt_left_8   = 6.9
+    txt_left_10  = 6.7
+    is_first = not hasattr(slide_case_detail, '_call_count')
+    slide_case_detail._call_count = getattr(slide_case_detail, '_call_count', 0) + 1
+    if slide_case_detail._call_count % 2 == 1:
+        ys = ys_8; rl = rect_left_8; rw = rect_w_8; tl = txt_left_8
+    else:
+        ys = ys_10; rl = rect_left_10; rw = rect_w_10; tl = txt_left_10
     for idx in range(3):
         y = ys[idx]
-        add_rect(sl, 5.4, y, 7.6, 1.65, hc('1A1A1A'), hc('333333'))
-        add_text(sl, 5.65, y+0.15, 4.0, 0.45, labels[idx], 21, bold=True, color=OR2)
-        add_text(sl, 5.65, y+0.65, 7.0, 0.9, case[keys[idx]], 13, color=MGY, wrap=True)
+        add_rect(sl, rl, y, rw, 1.65, hc('1A1A1A'), hc('333333'))
+        add_text(sl, tl, y+0.15, 4.0, 0.45, labels[idx], 21, bold=True, color=OR2)
+        add_text(sl, tl, y+0.65, 5.85, 0.9, case[keys[idx]], 13, color=MGY, wrap=True)
 
 # SLIDE 11 — PRODUCTOS
 def slide_productos(prs, sl, vertical_nm, prods, lang):
@@ -512,14 +527,14 @@ def slide_gancho(prs, sl, lang):
                  32, bold=True, color=DK, wrap=True)
         add_text(sl, 1.1, 5.3, 7.5, 0.9,
                  'Kruger has transformed more than 1500 digital products across 14 countries.',
-                 13, color=LGY, wrap=True)
+                 16, color=LGY, wrap=True)
     else:
         add_text(sl, 1.1, 2.078, 7.2, 2.794,
                  '"El futuro de los negocios es digital. La diferencia entre liderar y quedarse atrás está en la experiencia que ofreces a tus clientes."',
                  32, bold=True, color=DK, wrap=True)
         add_text(sl, 1.1, 5.3, 7.5, 0.9,
                  'Kruger ha transformado más de 1500 productos digitales en 14 países.',
-                 13, color=LGY, wrap=True)
+                 16, color=LGY, wrap=True)
     add_rect(sl, 1.2, 5.092, 1.5, 0.08, OR)
     add_logo(sl, SLIDE_IMGS['gancho_main'], 7.318, 0.3, 5.682, 7.098)
 
@@ -561,6 +576,7 @@ def generate():
     blank = prs.slide_layouts[6]
     def ns(): return prs.slides.add_slide(blank)
 
+    slide_case_detail._call_count = 0
     slide_portada(prs, ns(), cfg, lang)
     slide_disclaimer(prs, ns(), lang)
     slide_quienes(prs, ns(), lang)
