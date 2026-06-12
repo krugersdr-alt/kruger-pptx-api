@@ -196,7 +196,7 @@ def slide_portada(prs, sl, cfg, lang):
     add_text(sl, 8.5, 0.6, 4.6, 0.35,
              translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     if lang == 'en':
-        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 1.5, 6.5, 5.5)
+        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', -0.1061, 3.6061, 13.4359, 3.9466)
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
                  42, bold=True, color=WH, align=PP_ALIGN.CENTER)
@@ -205,7 +205,7 @@ def slide_portada(prs, sl, cfg, lang):
             ('enterprise, telecom, fintech and customer ecosystems.', 17, True, WH),
         ], wrap=True, align=PP_ALIGN.CENTER)
     else:
-        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 1.5, 6.5, 5.5)
+        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', -0.1061, 3.6061, 13.4359, 3.9466)
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
                  38, bold=True, color=WH, align=PP_ALIGN.CENTER)
@@ -365,7 +365,7 @@ def slide_como(prs, sl, lang):
         ('digital products powered by INFINITE DIGITAL TECHNOLOGY.', 13, False, DK),
     ])
     add_logo(sl, SLIDE_IMGS['como'], 5.209, 1.6, 7.5858, 5.921)
-    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274219/Imagen2_lnaj1u.png', 12.33, 0.0, 1.0, 1.0)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274219/Imagen2_lnaj1u.png', 9.4545, 0.0, 3.8755, 2.7246)
     add_logo(sl, LOGO_W, 10.423, 0.225, 2.1774, 0.679)
 
 # SLIDE 6 — DOLORES
@@ -443,14 +443,21 @@ def slide_case_detail(prs, sl, case, lang):
     is_first = not hasattr(slide_case_detail, '_call_count')
     slide_case_detail._call_count = getattr(slide_case_detail, '_call_count', 0) + 1
     if slide_case_detail._call_count % 2 == 1:
-        ys = ys_8; rl = rect_left_8; rw = rect_w_8; tl = txt_left_8
+        # Slide 8
+        ys_rect  = [2.0,   3.82,   5.64]
+        ys_label = [2.15,  3.97,   5.79]
+        ys_text  = [2.65,  4.47,   6.29]
+        rl = 6.725; rw = 6.275; tl_label = 6.9; tl_text = 6.9
     else:
-        ys = ys_10; rl = rect_left_10; rw = rect_w_10; tl = txt_left_10
+        # Slide 10
+        ys_rect  = [1.95,   3.77,   5.59]
+        ys_label = [2.1,    3.8937, 5.7278]
+        ys_text  = [2.6,    4.3937, 6.1778]
+        rl = 6.9545; rw = 6.3455; tl_label = 7.15; tl_text = 7.2023
     for idx in range(3):
-        y = ys[idx]
-        add_rect(sl, rl, y, rw, 1.65, hc('1A1A1A'), hc('333333'))
-        add_text(sl, tl, y+0.15, 4.0, 0.45, labels[idx], 21, bold=True, color=OR2)
-        add_text(sl, tl, y+0.65, 5.85, 0.9, case[keys[idx]], 13, color=MGY, wrap=True)
+        add_rect(sl, rl, ys_rect[idx], rw, 1.65, hc('1A1A1A'), hc('333333'))
+        add_text(sl, tl_label, ys_label[idx], 4.0, 0.45, labels[idx], 21, bold=True, color=OR2)
+        add_text(sl, tl_text, ys_text[idx], 5.85, 0.9, case[keys[idx]], 13, color=MGY, wrap=True)
 
 # SLIDE 11 — PRODUCTOS
 def slide_productos(prs, sl, vertical_nm, prods, lang):
