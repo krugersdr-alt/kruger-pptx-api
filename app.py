@@ -189,14 +189,14 @@ def T(lang, es, en):
 # SLIDE 1 — PORTADA
 def slide_portada(prs, sl, cfg, lang):
     set_bg(sl, OR)
-    add_logo(sl, SLIDE_IMGS['portada'], 6.6825, 0.0527, 5.6261, 7.5)
     add_logo(sl, LOGO_W, 0.4, 0.25, 1.988, 0.62)
     add_text(sl, 8.5, 0.22, 4.6, 0.4,
              cfg.get('name',''), 13, bold=True, color=WH, align=PP_ALIGN.RIGHT)
     add_text(sl, 8.5, 0.6, 4.6, 0.35,
              translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
+    # Imagen3 de fondo (capa inferior)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 3.6061, 13.3298, 3.8939)
     if lang == 'en':
-        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', -0.1061, 3.6061, 13.4359, 3.9466)
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
                  42, bold=True, color=WH, align=PP_ALIGN.CENTER)
@@ -205,7 +205,6 @@ def slide_portada(prs, sl, cfg, lang):
             ('enterprise, telecom, fintech and customer ecosystems.', 17, True, WH),
         ], wrap=True, align=PP_ALIGN.CENTER)
     else:
-        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', -0.1061, 3.6061, 13.4359, 3.9466)
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
                  38, bold=True, color=WH, align=PP_ALIGN.CENTER)
@@ -213,6 +212,8 @@ def slide_portada(prs, sl, cfg, lang):
             ('Diseñando experiencias digitales escalables para ', 17, False, WH),
             ('enterprise, telecom, fintech y ecosistemas de cliente.', 17, True, WH),
         ], wrap=True, align=PP_ALIGN.CENTER)
+    # SLIDE_IMGS portada al final — queda encima de Imagen3
+    add_logo(sl, SLIDE_IMGS['portada'], 6.6825, 0.0527, 5.6261, 7.5)
 
 # SLIDE 2 — DISCLAIMER
 # Cambios v14 vs v13:
