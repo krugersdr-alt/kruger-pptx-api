@@ -196,21 +196,23 @@ def slide_portada(prs, sl, cfg, lang):
     add_text(sl, 8.5, 0.6, 4.6, 0.35,
              translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     if lang == 'en':
+        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 1.5, 6.5, 5.5)
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
-                 42, bold=True, color=WH)
+                 42, bold=True, color=WH, align=PP_ALIGN.CENTER)
         add_runs(sl, 0.4, 6.5181, 7.4906, 0.9, [
             ('Designing scalable digital experiences for ', 17, False, WH),
             ('enterprise, telecom, fintech and customer ecosystems.', 17, True, WH),
-        ], wrap=True)
+        ], wrap=True, align=PP_ALIGN.CENTER)
     else:
+        add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 1.5, 6.5, 5.5)
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'DESARROLLO DE\nAPLICACIONES\nWEB & MOBILE\nCASOS DE ÉXITO',
-                 38, bold=True, color=WH)
+                 38, bold=True, color=WH, align=PP_ALIGN.CENTER)
         add_runs(sl, 0.4, 6.5181, 7.4906, 0.9, [
             ('Diseñando experiencias digitales escalables para ', 17, False, WH),
             ('enterprise, telecom, fintech y ecosistemas de cliente.', 17, True, WH),
-        ], wrap=True)
+        ], wrap=True, align=PP_ALIGN.CENTER)
 
 # SLIDE 2 — DISCLAIMER
 # Cambios v14 vs v13:
@@ -362,8 +364,8 @@ def slide_como(prs, sl, lang):
         ('HUMAN-CENTERED ', 13, True, OR),
         ('digital products powered by INFINITE DIGITAL TECHNOLOGY.', 13, False, DK),
     ])
-    add_logo(sl, SLIDE_IMGS['como'], 5.209, 1.6, 8.1549, 5.921)
-    add_rect(sl, 12.33, 0, 1.0, 1.0, OR)
+    add_logo(sl, SLIDE_IMGS['como'], 5.209, 1.6, 7.5858, 5.921)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274219/Imagen2_lnaj1u.png', 12.33, 0.0, 1.0, 1.0)
     add_logo(sl, LOGO_W, 10.423, 0.225, 2.1774, 0.679)
 
 # SLIDE 6 — DOLORES
@@ -425,10 +427,8 @@ def slide_case_detail(prs, sl, case, lang):
     add_logo(sl, LOGO_B, 11.5, 0.3, 1.6, 0.499)
     add_rect(sl, 0, 1.25, 13.33, 0.6, hc('111111'))
     add_text(sl, 0.4, 1.32, 12.0, 0.45, case['sub'].upper(), 16, bold=True, color=WH)
-    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.0, 2.0718, 5.384, 5.4198)
-    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 5.1464, 2.333, 1.6661, 1.2337)
-    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 5.4237, 3.97, 1.5485, 1.3062)
-    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 5.65, 5.83, 1.3282, 1.286)
+    add_logo(sl, SLIDE_IMGS['case_intro_a'], 0.0, 2.0718, 5.384, 5.0766)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781271549/Imagen1_xaugoq.png', 4.8952, 2.2245, 2.2548, 4.9655)
     if lang == 'en':
         labels = ['CHALLENGE', 'APPROACH', 'OUTCOME']
     else:
