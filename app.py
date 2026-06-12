@@ -195,7 +195,7 @@ def slide_portada(prs, sl, cfg, lang):
     add_text(sl, 8.5, 0.6, 4.6, 0.35,
              translate_title(cfg.get('title',''), lang), 11, color=hc('FFD0B0'), align=PP_ALIGN.RIGHT)
     # Imagen3 de fondo (capa inferior)
-    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 3.6061, 13.3298, 3.8939)
+    add_logo(sl, 'https://res.cloudinary.com/dpcojkrta/image/upload/v1781274254/Imagen3_rjhrgj.png', 0.0, 3.6061, 13.3298, 3.9466)
     if lang == 'en':
         add_text(sl, 0.4, 3.7574, 6.9281, 3.2,
                  'WEB & MOBILE APP\nDEVELOPMENT\nCASE STUDIES',
